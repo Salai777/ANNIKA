@@ -207,7 +207,7 @@
 
         /* Party Details Section */
         .party-details {
-            padding: 2rem 0;
+            padding: 0.5rem 0;
             background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 50%, #1f1f1f 100%);
             min-height: 100vh;
             display: flex;
@@ -262,10 +262,8 @@
             font-weight: bold;
             letter-spacing: 0.5px;
             text-shadow: 
-                0 0 5px #ffffff,
-                0 0 10px #ffffff,
-                0 0 15px #ffffff,
-                0 0 20px #ffffff;
+                0 0 3px #ffffff,
+                0 0 6px #ffffff;
         }
 
         .venue-link {
@@ -276,10 +274,8 @@
             padding-bottom: 2px;
             font-weight: bold;
             text-shadow: 
-                0 0 5px #ffffff,
-                0 0 10px #ffffff,
-                0 0 15px #ffffff,
-                0 0 20px #ffffff;
+                0 0 3px #ffffff,
+                0 0 6px #ffffff;
         }
 
         .venue-link:hover {
@@ -287,10 +283,8 @@
             border-bottom-color: rgba(255, 255, 255, 0.6);
             transform: translateY(-1px);
             text-shadow: 
-                0 0 8px #ffffff,
-                0 0 15px #ffffff,
-                0 0 25px #ffffff,
-                0 0 35px #ffffff;
+                0 0 5px #ffffff,
+                0 0 10px #ffffff;
         }
 
         /* RSVP Section */
@@ -512,31 +506,12 @@
         <div class="container">
             <div class="rsvp-content">
                 <h2 class="section-title">RSVP</h2>
-                <p style="color: #c0c0c0; font-size: 1.1rem; margin-bottom: 1rem;">
-                    We can't wait to celebrate together!
-                </p>
                 
                 <div class="rsvp-form">
                     <form id="rsvpForm">
                         <div class="form-group">
                             <label for="name">Your Name *</label>
                             <input type="text" id="name" name="name" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email">Email Address *</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="guests">Number of Guests *</label>
-                            <select id="guests" name="guests" required>
-                                <option value="">Select...</option>
-                                <option value="1">Just me</option>
-                                <option value="2">2 people</option>
-                                <option value="3">3 people</option>
-                                <option value="4">4 people</option>
-                            </select>
                         </div>
 
                         <div class="form-group">
@@ -549,13 +524,13 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="dietary">Dietary Restrictions or Special Requests</label>
-                            <textarea id="dietary" name="dietary" placeholder="Let us know about any dietary restrictions or special requests..."></textarea>
+                            <label for="song">Song Request</label>
+                            <input type="text" id="song" name="song" placeholder="Any song you'd like to hear at the party?">
                         </div>
 
                         <div class="form-group">
-                            <label for="message">Message for the Birthday Girl</label>
-                            <textarea id="message" name="message" placeholder="Share a birthday wish or message..."></textarea>
+                            <label for="dietary">Dietary Restrictions or Special Requests</label>
+                            <textarea id="dietary" name="dietary" placeholder="Let us know about any dietary restrictions or special requests..."></textarea>
                         </div>
 
                         <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
@@ -624,7 +599,7 @@
             const data = Object.fromEntries(formData);
             
             // Simple validation
-            if (!data.name || !data.email || !data.guests || !data.attending) {
+            if (!data.name || !data.attending) {
                 alert('Please fill in all required fields.');
                 return;
             }
@@ -632,16 +607,14 @@
             // Create email body
             let emailBody = `RSVP Response:\n\n`;
             emailBody += `Name: ${data.name}\n`;
-            emailBody += `Email: ${data.email}\n`;
-            emailBody += `Number of Guests: ${data.guests}\n`;
             emailBody += `Attending: ${data.attending}\n`;
+            
+            if (data.song) {
+                emailBody += `Song Request: ${data.song}\n`;
+            }
             
             if (data.dietary) {
                 emailBody += `Dietary Restrictions: ${data.dietary}\n`;
-            }
-            
-            if (data.message) {
-                emailBody += `Birthday Message: ${data.message}\n`;
             }
             
             // Create mailto link
