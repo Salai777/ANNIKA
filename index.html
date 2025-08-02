@@ -94,7 +94,7 @@
             justify-content: center;
             text-align: center;
             position: relative;
-            background: linear-gradient(to bottom, rgba(36, 36, 36, 0.7) 0%, rgba(26, 26, 26, 0.8) 100%),
+            background: linear-gradient(to bottom, rgba(36, 36, 36, 0.3) 0%, rgba(26, 26, 26, 0.4) 100%),
                         url('https://res.cloudinary.com/dkp0t9iap/image/upload/v1754144172/PHOTO-2025-07-30-23-42-12_kugjds.jpg');
             background-size: cover;
             background-position: center;
@@ -115,9 +115,10 @@
             justify-content: center;
         }
 
-        .heart-emoji {
+        .emoji-group {
             font-size: 1.5rem;
             color: #f0f0f0;
+            letter-spacing: 8px;
         }
 
         /* Floating center image */
@@ -214,45 +215,24 @@
         }
 
         .details-content {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 3rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             text-align: center;
+            height: 100%;
         }
 
-        .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
+        .details-text {
+            max-width: 600px;
+        }
+
+        .details-text p {
             color: #ffffff;
-            font-weight: 300;
-            letter-spacing: 1px;
-        }
-
-        .detail-card {
-            background: linear-gradient(135deg, #2a2a2a 0%, #333 100%);
-            border-radius: 15px;
-            padding: 2.5rem;
-            border: 1px solid #444;
-            transition: all 0.3s ease;
-        }
-
-        .detail-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
-            border-color: #666;
-        }
-
-        .detail-card h3 {
-            font-size: 1.5rem;
-            color: #ffffff;
+            font-size: 1.4rem;
+            line-height: 2;
             margin-bottom: 1rem;
-            font-weight: 400;
-        }
-
-        .detail-card p {
-            color: #c0c0c0;
-            font-size: 1.1rem;
-            line-height: 1.8;
+            font-weight: 300;
+            letter-spacing: 0.5px;
         }
 
         /* RSVP Section */
@@ -378,16 +358,18 @@
                 font-size: 2rem;
             }
             
-            .detail-card {
-                padding: 2rem;
+            .details-text p {
+                font-size: 1.2rem;
+                line-height: 1.8;
             }
             
             .rsvp-form {
                 padding: 2rem;
             }
             
-            .heart-emoji {
+            .emoji-group {
                 font-size: 1.3rem;
+                letter-spacing: 6px;
             }
         }
         
@@ -415,8 +397,9 @@
                 gap: 0.8rem;
             }
             
-            .heart-emoji {
+            .emoji-group {
                 font-size: 1.2rem;
+                letter-spacing: 4px;
             }
         }
 
@@ -435,7 +418,7 @@
 <body id="top">
     <header>
         <nav class="container">
-            <div class="heart-emoji">🖤</div>
+            <div class="emoji-group">🪩🐆🍸</div>
             <ul class="nav-links">
                 <li><a href="#top">Home</a></li>
                 <li><a href="#details">Details</a></li>
@@ -458,26 +441,10 @@
     <section class="party-details" id="details">
         <div class="container">
             <div class="details-content">
-                <h2 class="section-title">Party Details</h2>
-                
-                <div class="detail-card">
-                    <h3>When</h3>
-                    <p>Saturday, [Date]<br>
-                    [Time]</p>
-                </div>
-
-                <div class="detail-card">
-                    <h3>Where</h3>
-                    <p>[Venue Name]<br>
-                    [Address]<br>
-                    [City]</p>
-                </div>
-
-                <div class="detail-card">
-                    <h3>What to Expect</h3>
-                    <p>[Party type/theme details]<br>
-                    [Dress code if any]<br>
-                    [Special notes]</p>
+                <div class="details-text">
+                    <p>At Petites Bulles Champagne Bar (Next to Fools)</p>
+                    <p>19:00 on Saturday 16 August</p>
+                    <p>Theme: Night out in Eppendorf</p>
                 </div>
             </div>
         </div>
