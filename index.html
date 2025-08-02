@@ -208,10 +208,38 @@
         /* Party Details Section */
         .party-details {
             padding: 5rem 0;
-            background: #242424;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 50%, #1f1f1f 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .party-details::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 200px;
+            background: url('https://res.cloudinary.com/dkp0t9iap/image/upload/v1754154484/Untitled_Artwork_1_1_ruvcjk.jpg') center/contain no-repeat;
+            opacity: 0.8;
+            z-index: 1;
+        }
+
+        .party-details::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 200px;
+            background: url('https://res.cloudinary.com/dkp0t9iap/image/upload/v1754154474/Untitled_Artwork_2_ax3pqh.jpg') center/contain no-repeat;
+            opacity: 0.8;
+            z-index: 1;
         }
 
         .details-content {
@@ -220,10 +248,17 @@
             align-items: center;
             text-align: center;
             height: 100%;
+            position: relative;
+            z-index: 2;
         }
 
         .details-text {
             max-width: 600px;
+            background: rgba(26, 26, 26, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .details-text p {
@@ -233,6 +268,20 @@
             margin-bottom: 1rem;
             font-weight: 300;
             letter-spacing: 0.5px;
+        }
+
+        .venue-link {
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 2px;
+        }
+
+        .venue-link:hover {
+            color: #e0e0e0;
+            border-bottom-color: rgba(255, 255, 255, 0.6);
+            transform: translateY(-1px);
         }
 
         /* RSVP Section */
@@ -442,7 +491,7 @@
         <div class="container">
             <div class="details-content">
                 <div class="details-text">
-                    <p>At Petites Bulles Champagne Bar (Next to Fools)</p>
+                    <p><a href="https://maps.google.com/?q=5+Herte+St,+Stellenbosch+Central,+Stellenbosch,+7600" target="_blank" class="venue-link">At Petites Bulles Champagne Bar (Next to Fools)</a></p>
                     <p>19:00 on Saturday 16 August</p>
                     <p>Theme: Night out in Eppendorf</p>
                 </div>
