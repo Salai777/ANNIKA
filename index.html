@@ -100,7 +100,7 @@
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
-            padding: 0 20px 80px 20px;
+            padding: 0 20px 150px 20px;
         }
 
         .hero-content {
@@ -113,6 +113,11 @@
         .scroll-down-btn {
             display: flex;
             justify-content: center;
+        }
+
+        .heart-emoji {
+            font-size: 1.5rem;
+            color: #f0f0f0;
         }
 
         /* Floating center image */
@@ -339,7 +344,7 @@
         @media (max-width: 768px) {
             .hero {
                 background-attachment: scroll;
-                padding: 0 15px;
+                padding: 0 15px 120px 15px;
             }
             
             .hero h1 {
@@ -380,9 +385,17 @@
             .rsvp-form {
                 padding: 2rem;
             }
+            
+            .heart-emoji {
+                font-size: 1.3rem;
+            }
         }
         
         @media (max-width: 480px) {
+            .hero {
+                padding: 0 15px 100px 15px;
+            }
+            
             .hero h1 {
                 font-size: 1.8rem;
             }
@@ -401,6 +414,10 @@
             .hero-buttons {
                 gap: 0.8rem;
             }
+            
+            .heart-emoji {
+                font-size: 1.2rem;
+            }
         }
 
         /* Touch device optimizations */
@@ -418,7 +435,7 @@
 <body id="top">
     <header>
         <nav class="container">
-            <div></div>
+            <div class="heart-emoji">🖤</div>
             <ul class="nav-links">
                 <li><a href="#top">Home</a></li>
                 <li><a href="#details">Details</a></li>
