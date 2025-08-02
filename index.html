@@ -102,7 +102,7 @@
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
-            padding: 0 20px 150px 20px;
+            padding: 0 20px 180px 20px;
         }
 
         .hero-content {
@@ -263,9 +263,7 @@
             margin-bottom: 1rem;
             font-weight: bold;
             letter-spacing: 0.5px;
-            text-shadow: 
-                0 0 3px #ffffff,
-                0 0 6px #ffffff;
+            text-shadow: 0 0 2px #ffffff;
         }
 
         .venue-link {
@@ -275,18 +273,14 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.3);
             padding-bottom: 2px;
             font-weight: bold;
-            text-shadow: 
-                0 0 3px #ffffff,
-                0 0 6px #ffffff;
+            text-shadow: 0 0 2px #ffffff;
         }
 
         .venue-link:hover {
             color: #ffffff;
             border-bottom-color: rgba(255, 255, 255, 0.6);
             transform: translateY(-1px);
-            text-shadow: 
-                0 0 5px #ffffff,
-                0 0 10px #ffffff;
+            text-shadow: 0 0 4px #ffffff;
         }
 
         /* RSVP Section */
@@ -378,7 +372,7 @@
         @media (max-width: 768px) {
             .hero {
                 background-attachment: scroll;
-                padding: 0 15px 120px 15px;
+                padding: 0 15px 150px 15px;
             }
             
             .hero h1 {
@@ -429,7 +423,7 @@
         
         @media (max-width: 480px) {
             .hero {
-                padding: 0 15px 100px 15px;
+                padding: 0 15px 130px 15px;
             }
             
             .hero h1 {
@@ -498,7 +492,7 @@
                 <div class="details-text">
                     <p><a href="https://maps.google.com/?q=5+Herte+St,+Stellenbosch+Central,+Stellenbosch,+7600" target="_blank" class="venue-link">At Petites Bulles Champagne Bar (Next to Fools)</a></p>
                     <p>19:00 on Saturday 16 August</p>
-                    <p>Theme: Night out in Eppendorf</p>
+                    <p>Dresscode: Formal Discotheque - white, silver, gold</p>
                     <p>RSVP by 9 August</p>
                 </div>
             </div>
@@ -514,7 +508,13 @@
                 <h2 class="section-title">RSVP</h2>
                 
                 <div class="rsvp-form">
-                    <form id="rsvpForm">
+                    <form id="rsvpForm" name="rsvp" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                        <!-- Hidden field for spam protection -->
+                        <input type="hidden" name="form-name" value="rsvp" />
+                        <div style="display: none;">
+                            <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+                        </div>
+
                         <div class="form-group">
                             <label for="name">Your Name *</label>
                             <input type="text" id="name" name="name" required>
@@ -596,46 +596,22 @@
             }
         });
 
-        // Form submission handler
+        // Form submission handler for Netlify Forms
         document.getElementById('rsvpForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+            // Let Netlify handle the form submission naturally
+            // The form will redirect to a success page or show a confirmation
             
-            // Get form data
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
+            // Optional: Show a quick confirmation message
+            const button = this.querySelector('button[type="submit"]');
+            const originalText = button.textContent;
+            button.textContent = 'Sending...';
+            button.disabled = true;
             
-            // Simple validation
-            if (!data.name || !data.attending) {
-                alert('Please fill in all required fields.');
-                return;
-            }
-            
-            // Create email body
-            let emailBody = `RSVP Response:\n\n`;
-            emailBody += `Name: ${data.name}\n`;
-            emailBody += `Attending: ${data.attending}\n`;
-            
-            if (data.song) {
-                emailBody += `Song Request: ${data.song}\n`;
-            }
-            
-            if (data.dietary) {
-                emailBody += `Dietary Restrictions: ${data.dietary}\n`;
-            }
-            
-            // Create mailto link
-            const subject = encodeURIComponent('Birthday Party RSVP - ' + data.name);
-            const body = encodeURIComponent(emailBody);
-            const mailtoLink = `mailto:YOUR_EMAIL@example.com?subject=${subject}&body=${body}`;
-            
-            // Open email client
-            window.location.href = mailtoLink;
-            
-            // Show confirmation
-            alert('Thank you for your RSVP! Your email client should open now to send your response.');
-            
-            // Reset form
-            this.reset();
+            // Re-enable button after a short delay in case there's an error
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.disabled = false;
+            }, 3000);
         });
 
         // Add touch feedback for mobile
