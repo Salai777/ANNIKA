@@ -508,12 +508,8 @@
                 <h2 class="section-title">RSVP</h2>
                 
                 <div class="rsvp-form">
-                    <form id="rsvpForm" name="rsvp" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-                        <!-- Hidden field for spam protection -->
+                    <form name="rsvp" method="POST" data-netlify="true">
                         <input type="hidden" name="form-name" value="rsvp" />
-                        <div style="display: none;">
-                            <label>Don't fill this out if you're human: <input name="bot-field" /></label>
-                        </div>
 
                         <div class="form-group">
                             <label for="name">Your Name *</label>
@@ -596,23 +592,8 @@
             }
         });
 
-        // Form submission handler for Netlify Forms
-        document.getElementById('rsvpForm').addEventListener('submit', function(e) {
-            // Let Netlify handle the form submission naturally
-            // The form will redirect to a success page or show a confirmation
-            
-            // Optional: Show a quick confirmation message
-            const button = this.querySelector('button[type="submit"]');
-            const originalText = button.textContent;
-            button.textContent = 'Sending...';
-            button.disabled = true;
-            
-            // Re-enable button after a short delay in case there's an error
-            setTimeout(() => {
-                button.textContent = originalText;
-                button.disabled = false;
-            }, 3000);
-        });
+        // Remove form submission handler - let Netlify handle it naturally
+        // No JavaScript needed for Netlify Forms
 
         // Add touch feedback for mobile
         document.querySelectorAll('.btn, .detail-card').forEach(element => {
